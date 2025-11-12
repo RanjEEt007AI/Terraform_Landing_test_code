@@ -1,8 +1,13 @@
 #for terraform basic commands----------------
+
 terraform init     # Provider plugins download karta hai
 terraform plan     # Kya create hoga, uska preview
 terraform apply    # Infrastructure create kar do
 terraform destroy  # Resource delete kar do
+
+
+
+
 #for github basic commands---------------------
 # 1. Git initialize karo
 git init
