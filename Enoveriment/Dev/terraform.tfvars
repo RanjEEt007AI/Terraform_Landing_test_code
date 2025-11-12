@@ -1,25 +1,25 @@
 resource_group = {
   rg1 = {
 
-    name       = "rg-dev-001"
+    name       = "rg-revisions-001"
     location   = "central india"
     managed_by = "terraform"
     tags = {
-      envoirment = "dev"
+      envoirment = "revisions"
       team       = "todappteam"
     }
   }
   rg2 = {
 
-    name     = "rg-dev-002"
+    name     = "rg-revisions-002"
     location = "central india"
   }
 }
 
 stg = {
   stg1 = {
-    name                             = "devstorage001os"
-    resource_group_name              = "rg-dev-001"
+    name                             = "revisionsstorage001os"
+    resource_group_name              = "rg-revisions-001"
     location                         = "central india"
     account_tier                     = "Standard"
     account_replication_type         = "GRS"
@@ -30,8 +30,8 @@ stg = {
     min_tls_version                  = "TLS1_0"
   }
   stg2 = {
-    name                     = "devstorage002os"
-    resource_group_name      = "rg-dev-002"
+    name                     = "revisionsstorage002os"
+    resource_group_name      = "rg-revisions-002"
     location                 = "central india"
     account_tier             = "Standard"
     account_replication_type = "GRS"
@@ -41,44 +41,44 @@ stg = {
 container = {
   cont1 = {
     name                              = "container1"
-    storage_account_name              = "devstorage001os"
-    resource_group_name               = "rg-dev-001"
+    storage_account_name              = "revisionsstorage001os"
+    resource_group_name               = "rg-revisions-001"
     container_access_type             = "private"
     encryption_scope_override_enabled = "true"
 
   }
   cont2 = {
     name                 = "container2"
-    storage_account_name = "devstorage002os"
-    resource_group_name  = "rg-dev-002"
+    storage_account_name = "revisionsstorage002os"
+    resource_group_name  = "rg-revisions-002"
   }
 }
 
 virtual_network = {
   vnet1 = {
-    name                = "dev-vnet-001"
+    name                = "revisions-vnet-001"
     location            = "central india"
-    resource_group_name = "rg-dev-001"
+    resource_group_name = "rg-revisions-001"
     address_space       = ["10.0.0.0/16"]
     subnets = [
       {
-        name             = "sub-dev-001"
+        name             = "sub-revisions-001"
         address_prefixes = ["10.0.20.0/24"]
       },
       {
-        name             = "sub-dev-002"
+        name             = "sub-revisions-002"
         address_prefixes = ["10.0.30.0/24"]
       }
     ]
   }
   vnet2 = {
-    name                = "dev-vnet-002"
+    name                = "revisions-vnet-002"
     location            = "central india"
-    resource_group_name = "rg-dev-002"
+    resource_group_name = "rg-revisions-002"
     address_space       = ["10.0.0.0/16"]
     subnets = [
       {
-        name             = "sub-dev-003"
+        name             = "sub-revisions-003"
         address_prefixes = ["10.0.30.0/24"]
     }]
   }
@@ -87,19 +87,19 @@ virtual_network = {
 
 pip = {
   pip1 = {
-    name                 = "pip-dev-001"
-    resource_group_name  = "rg-dev-001"
+    name                 = "pip-revisions-001"
+    resource_group_name  = "rg-revisions-001"
     location             = "central india"
     allocation_method    = "Static"
     ddos_protection_mode = "Disabled"
     tags = {
-      envoirment = "dev"
+      envoirment = "revisions"
       team       = "todappteam"
     }
   }
   pip2 = {
-    name                 = "pip-dev-002"
-    resource_group_name  = "rg-dev-002"
+    name                 = "pip-revisions-002"
+    resource_group_name  = "rg-revisions-002"
     location             = "central india"
     allocation_method    = "Static"
     ddos_protection_mode = "Disabled"
@@ -108,11 +108,11 @@ pip = {
 
 nic = {
   nic1 = {
-    name                 = "nic-dev-001"
+    name                 = "nic-revisions-001"
     location             = "central india"
-    resource_group_name  = "rg-dev-001"
-    subnet_name          = "sub-dev-001"
-    virtual_network_name = "dev-vnet-001"
+    resource_group_name  = "rg-revisions-001"
+    subnet_name          = "sub-revisions-001"
+    virtual_network_name = "revisions-vnet-001"
     auxiliary_sku        = "None"
     auxiliary_mode       = "None"
     ip_configurations = {
@@ -123,11 +123,11 @@ nic = {
     }
   }
   nic2 = {
-    name                 = "nic-dev-002"
+    name                 = "nic-revisions-002"
     location             = "central india"
-    resource_group_name  = "rg-dev-002"
-    subnet_name          = "sub-dev-003"
-    virtual_network_name = "dev-vnet-002"
+    resource_group_name  = "rg-revisions-002"
+    subnet_name          = "sub-revisions-003"
+    virtual_network_name = "revisions-vnet-002"
     ip_configurations = {
       ip1 = {
         name                          = "internal1"
@@ -139,14 +139,14 @@ nic = {
 }
 nsg = {
   nsg1 = {
-    name                 = "nsg-dev-001"
+    name                 = "nsg-revisions-001"
     location             = "central india"
-    resource_group_name  = "rg-dev-001"
-    nic_name             = "nic-dev-001"
-    subnet_name          = "sub-dev-001"
-    virtual_network_name = "dev-vnet-001"
+    resource_group_name  = "rg-revisions-001"
+    nic_name             = "nic-revisions-001"
+    subnet_name          = "sub-revisions-001"
+    virtual_network_name = "revisions-vnet-001"
     tags = {
-      envoirment = "dev"
+      envoirment = "revisions"
       team       = "todappteam"
     }
     security_rules = {
@@ -164,12 +164,12 @@ nsg = {
     }
   }
   nsg2 = {
-    name                 = "nsg-dev-002"
+    name                 = "nsg-revisions-002"
     location             = "central india"
-    resource_group_name  = "rg-dev-002"
-    nic_name             = "nic-dev-002"
-    subnet_name          = "sub-dev-003"
-    virtual_network_name = "dev-vnet-002"
+    resource_group_name  = "rg-revisions-002"
+    nic_name             = "nic-revisions-002"
+    subnet_name          = "sub-revisions-003"
+    virtual_network_name = "revisions-vnet-002"
     security_rules = {
       s2 = {
         name                       = "test1234"
@@ -189,7 +189,7 @@ nsg = {
 keyvault = {
   key1 = {
     name                        = "keyvault001os"
-    resource_group_name         = "rg-dev-001"
+    resource_group_name         = "rg-revisions-001"
     location                    = "central india"
     enabled_for_disk_encryption = "true"
     soft_delete_retention_days  = "7"
@@ -198,7 +198,7 @@ keyvault = {
   }
   key2 = {
     name                        = "keyvault002os"
-    resource_group_name         = "rg-dev-002"
+    resource_group_name         = "rg-revisions-002"
     location                    = "central india"
     enabled_for_disk_encryption = "true"
     soft_delete_retention_days  = "7"
@@ -210,43 +210,43 @@ keyvault = {
 secrets = {
   secret1 = {
     key_name            = "keyvault001os"
-    resource_group_name = "rg-dev-001"
+    resource_group_name = "rg-revisions-001"
     secret_name         = "vm1"
     secret_value        = "Oves@123"
   }
   secret2 = {
     key_name            = "keyvault001os"
-    resource_group_name = "rg-dev-001"
+    resource_group_name = "rg-revisions-001"
     secret_name         = "password1"
     secret_value        = "oves@12345"
   }
   secret3 = {
     key_name            = "keyvault002os"
-    resource_group_name = "rg-dev-002"
+    resource_group_name = "rg-revisions-002"
     secret_name         = "vm2"
     secret_value        = "anjali2"
   }
   secret4 = {
     key_name            = "keyvault002os"
-    resource_group_name = "rg-dev-002"
+    resource_group_name = "rg-revisions-002"
     secret_name         = "password2"
     secret_value        = "oves@12345"
   }
 }
 servers = {
   server1 = {
-    name                          = "devserver001os"
+    name                          = "revisionsserver001os"
     location                      = "central india"
-    resource_group_name           = "rg-dev-001"
+    resource_group_name           = "rg-revisions-001"
     public_network_access_enabled = true
     administrator_login           = "server12"
     administrator_login_password  = "Oves@12345"
     version                       = "12.0"
   }
   server2 = {
-    name                          = "devserver002os"
+    name                          = "revisionsserver002os"
     location                      = "central india"
-    resource_group_name           = "rg-dev-002"
+    resource_group_name           = "rg-revisions-002"
     public_network_access_enabled = true
     administrator_login           = "server13"
     administrator_login_password  = "Oves@12345"
@@ -255,9 +255,9 @@ servers = {
 }
 database = {
   db1 = {
-    name                = "devdatabase001os"
-    server_name         = "devserver001os"
-    resource_group_name = "rg-dev-001"
+    name                = "revisionsdatabase001os"
+    server_name         = "revisionsserver001os"
+    resource_group_name = "rg-revisions-001"
     collation           = "SQL_Latin1_General_CP1_CI_AS"
     license_type        = "LicenseIncluded"
     max_size_gb         = 2
@@ -265,9 +265,9 @@ database = {
     enclave_type        = "VBS"
   }
   db2 = {
-    name                = "devdatabase002os"
-    server_name         = "devserver002os"
-    resource_group_name = "rg-dev-002"
+    name                = "revisionsdatabase002os"
+    server_name         = "revisionsserver002os"
+    resource_group_name = "rg-revisions-002"
     collation           = "SQL_Latin1_General_CP1_CI_AS"
     license_type        = "LicenseIncluded"
     max_size_gb         = 2
@@ -279,11 +279,11 @@ database = {
 
 vms = {
   vm1 = {
-    vm_name             = "dev-vm-001os"
-    resource_group_name = "rg-dev-001"
+    vm_name             = "revisions-vm-001os"
+    resource_group_name = "rg-revisions-001"
     location            = "central india"
     size                = "Standard_F2"
-    nic_name            = "nic-dev-001"
+    nic_name            = "nic-revisions-001"
     key_name            = "keyvault001os"
     secret_name         = "vm1"
     secret_value        = "password1"
@@ -303,11 +303,11 @@ vms = {
     ]
   }
   vm2 = {
-    vm_name             = "dev-vm-002os"
-    resource_group_name = "rg-dev-002"
+    vm_name             = "revisions-vm-002os"
+    resource_group_name = "rg-revisions-002"
     location            = "central india"
     size                = "Standard_F2"
-    nic_name            = "nic-dev-002"
+    nic_name            = "nic-revisions-002"
     key_name            = "keyvault002os"
     secret_name         = "vm2"
     secret_value        = "password2"
